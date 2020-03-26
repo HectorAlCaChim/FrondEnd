@@ -1,0 +1,27 @@
+<p>table-view works!</p>
+  <div class="container">
+    <div class="row">
+      <nav class="navbar">
+        <input class="form-control" type="text" name="filter" [(ngModel)]="term">      
+      </nav>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor='let column of columns' (click)="sort(column)">{{column}}
+                <span class="glyphicon sort-icon" *ngIf="key == column" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th>
+              Eliminar
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | orderBy: key : reverse | filter:term | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                <td contenteditable="true" *ngFor='let column of columns'>{{item[column]}}</td>
+                <td><button type="button"class="btn btn-danger btn-rounded btn-sm my-0" (click)="imprimir(item)">Eliminar</button></td>
+              </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </table>
+    </div>
+  </div>

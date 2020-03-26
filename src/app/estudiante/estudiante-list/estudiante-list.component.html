@@ -1,0 +1,8 @@
+<p>estudiante-List works!</p>
+<app-table-view [items]="estudiantes" [columns]="headers"></app-table-view>
+<div class="newStudent">
+    <button type="button" class="btn btn-primary" data-toggle="modal" (click)="openVideoPopup()">
+        Launch demo modal
+    </button>
+</div>
+<router-outlet></router-outlet>
