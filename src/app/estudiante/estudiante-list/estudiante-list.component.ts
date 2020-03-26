@@ -41,14 +41,16 @@ export class EstudianteListComponent implements OnInit {
       this.estudiantes = info;
     });
   }
+  public deleteEstudiante(id: number) {
+    console.log(id);
+    this.estudianteService.delete(id).subscribe(x => {
+      if (x) {
+        console.log('entro a recargar');
+      }
+    });
+  }
   ngOnInit() {
     this.loadEstudiantes();
-    this.recargar();
-  }
-
-  public recargar() {
-    this.result = this.modalService.hasOpenModals();
-    console.log(this.result);
   }
 
 }

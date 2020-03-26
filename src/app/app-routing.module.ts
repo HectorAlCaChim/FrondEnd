@@ -28,6 +28,8 @@ const routes: Routes = [
     path: 'logout', component: LogoutComponent
   },
   {
+    path: 'maestros', loadChildren: () => import('./maestros/maestros.module').then(m => m.MaestrosModule) },
+  {
     path: '**',
     component: NotFoundComponent
   }];

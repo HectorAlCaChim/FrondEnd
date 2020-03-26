@@ -24,7 +24,7 @@ import { NgbModule, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap'
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

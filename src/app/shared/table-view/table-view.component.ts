@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EstudianteListComponent } from 'src/app/estudiante/estudiante-list/estudiante-list.component';
 
 @Component({
@@ -11,6 +11,7 @@ export class TableViewComponent implements OnInit {
   @Input() columns: object[] = [];
   @Input() items = new Array<any>();
   @Input() term: string ;
+  @Output() propagar = new EventEmitter<string>();
   constructor() { }
 
   key: string = 'idEstudiantes';
@@ -23,7 +24,7 @@ export class TableViewComponent implements OnInit {
 
   ngOnInit() {
   }
-  imprimir(items= new Array<any>()) {
+  public imprimir(items= new Array<any>()) {
     console.log(this.items);
     let cont = 0;
     // tslint:disable-next-line: forin
@@ -38,10 +39,9 @@ export class TableViewComponent implements OnInit {
         }
       }
     }
-    // console.log(removeItem);
-    // console.log(removeIndex);
     this.items.splice(removeIndex, 1);
     console.log(this.items);
+    this.propagar.emit(removeItem);
   }
 
 }
